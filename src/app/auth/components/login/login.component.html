@@ -1,0 +1,16 @@
+<div class="section">
+  <mat-card class="card">
+    <form [formGroup]="formGroup">
+      <div class="card__title">Welcome</div>
+      <input formControlName="login" placeholder="Login" class="card__input">
+      <input formControlName="password" placeholder="Password" class="card__input">
+      <button class="card__button"
+              mat-button
+              (click)="loginSubmit()"
+              [disabled]="formGroup.invalid"
+      >
+        Login
+      </button>
+    </form>
+  </mat-card>
+</div>

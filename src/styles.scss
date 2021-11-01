@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@mixin style-color() {
+  --bg-color: #F8F8FA;
+  --border-color: #E8E8E8;
+  --disabled-color: #CED2DD;
+
+  --gray-G0-color: #FFFFFF;
+
+  --blue-color: #143BFF;
+  --purple-color: #AA01DE;
+  --red-color: #F93433;
+}
+
+* {
+  @include style-color;
+  //font-family: Montserrat, serif;
+}
+
+input:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}

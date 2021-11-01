@@ -1,0 +1,58 @@
+.section {
+  height: 100vh;
+  padding-top: 130px;
+  background-color: var(--bg-color);
+}
+
+.card {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 55px 10px;
+  background-color: var(--gray-G0-color);
+  border: 1px solid var(--border-color);
+
+  &__title {
+    font-width: bold;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__input {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 350px;
+    height: 50px;
+    line-height: 40px;
+    font-size: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-top: 10px;
+  }
+
+  &__input:focus {
+    border: 1px solid var(--blue-color);
+  }
+
+  &__button {
+    display: flex;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    background: linear-gradient(0.25turn, var(--blue-color), var(--purple-color), var(--red-color));
+    color: var(--gray-G0-color);
+    font-size: 20px;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 75px;
+  }
+
+  &__button:disabled {
+    background: var(--disabled-color);
+  }
+}
+
