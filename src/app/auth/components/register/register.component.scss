@@ -37,6 +37,10 @@
     border: 1px solid var(--blue-color);
   }
 
+  &__radio-section {
+    padding: 10px 15px;
+  }
+
   &__buttons {
     display: flex;
     justify-content: space-between;
@@ -56,13 +60,9 @@
       background: linear-gradient(0.25turn, var(--blue-color), var(--purple-color), var(--red-color));
     }
 
-    &__register {
-      background: var(--blue-color);
-    }
   }
 
   &__button:disabled {
     background: var(--disabled-color);
   }
 }
-

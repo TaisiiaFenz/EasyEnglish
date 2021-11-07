@@ -1,0 +1,37 @@
+<div class="section">
+  <mat-card class="card">
+    <form [formGroup]="formGroup">
+      <div class="card__title">Register</div>
+      <input formControlName="name" placeholder="Name" class="card__input">
+      <input formControlName="surname" placeholder="Surname" class="card__input">
+      <div class="card__radio-section">
+        <div>
+          Role:
+        </div>
+        <div class="card__radio-section__radio-buttons">
+          <label>
+            <input type="radio" value="Teacher" formControlName="role">
+            <span>Teacher</span>
+          </label>
+          <label>
+            <input type="radio" value="Student" formControlName="role">
+            <span>Student</span>
+          </label>
+        </div>
+      </div>
+      <input type="date" formControlName="birthDate" class="card__input">
+      <input formControlName="login" placeholder="Login" class="card__input">
+      <input formControlName="password" placeholder="Password" class="card__input">
+      <div class="card__buttons">
+        <button class="card__button card__button__login"
+                mat-button
+                (click)="submit()"
+                [disabled]="formGroup.invalid"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
+

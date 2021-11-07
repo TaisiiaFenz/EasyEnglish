@@ -4,13 +4,21 @@
       <div class="card__title">Welcome</div>
       <input formControlName="login" placeholder="Login" class="card__input">
       <input formControlName="password" placeholder="Password" class="card__input">
-      <button class="card__button"
-              mat-button
-              (click)="loginSubmit()"
-              [disabled]="formGroup.invalid"
-      >
-        Login
-      </button>
+      <div class="card__buttons">
+        <button class="card__button card__button__login"
+                mat-button
+                (click)="loginSubmit()"
+                [disabled]="formGroup.invalid"
+        >
+          Login
+        </button>
+        <button class="card__button card__button__register"
+                mat-button
+                (click)="register()"
+        >
+          SignUp
+        </button>
+      </div>
     </form>
   </mat-card>
 </div>
