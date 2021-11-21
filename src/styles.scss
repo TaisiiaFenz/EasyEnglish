@@ -4,6 +4,8 @@
   --disabled-color: #CED2DD;
 
   --gray-G0-color: #FFFFFF;
+  --gray-font-color: #141B30;
+  --gray-font-main-color: #767E84;
 
   --blue-color: #143BFF;
   --purple-color: #AA01DE;
@@ -12,7 +14,7 @@
 
 * {
   @include style-color;
-  //font-family: Montserrat, serif;
+  font-family: sans-serif;
 }
 
 input:active, :hover, :focus {

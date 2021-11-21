@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit(): void {
-    console.log(this.formGroup);
+    this.router.navigate(['homeStudent']);
   }
 
   register(): void {

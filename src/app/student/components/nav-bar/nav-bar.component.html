@@ -1,0 +1,22 @@
+<div class="section">
+  <div class="menu">
+    <div
+      class="menu__item"
+      [class]="(activeItem == 'homeStudent') ? 'active-item': ''"
+      routerLink="/homeStudent"
+    >
+      Home student
+    </div>
+    <div
+      class="menu__item"
+      [class]="(activeItem == 'tasksStudent') ? 'active-item': ''"
+      routerLink="/tasksStudent"
+    >
+      Tasks student
+    </div>
+  </div>
+  <div class="auth">
+    <div class="auth__name">Your name</div>
+    <div class="auth__logout">logout</div>
+  </div>
+</div>

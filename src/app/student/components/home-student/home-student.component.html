@@ -1,0 +1,11 @@
+<div class="section">
+  <app-nav-bar [activeItem]="'homeStudent'"></app-nav-bar>
+  <div
+    *ngIf="!showTest"
+    (click)="openTest()"
+    class="section__button section__button__active"
+  >
+    Start a test
+  </div>
+  <app-freshman-test *ngIf="showTest"></app-freshman-test>
+</div>
