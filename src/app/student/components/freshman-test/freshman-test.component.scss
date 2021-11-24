@@ -1,0 +1,36 @@
+.test {
+  background-color: var(--gray-G0-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  width: 800px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px;
+
+  &__title {
+    font-size: 30px;
+    color: var(--gray-font-color);
+  }
+
+  &__sub-title {
+    color: var(--gray-font-main-color);
+    font-size: 18px;
+  }
+
+  &__task {
+    margin-top: 25px;
+    font-size: 20px;
+
+    &__answers {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 15px;
+      font-size: 18px;
+    }
+  }
+
+  &__button {
+    margin-top: 40px;
+  }
+}

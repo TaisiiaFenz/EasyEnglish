@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TaskCardComponent } from './components/task-card/task-card.component';
 
 
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+    declarations: [
+        TaskCardComponent
+    ],
+    exports: [
+        TaskCardComponent
+    ],
+    imports: [
+        CommonModule
+    ]
 })
 export class ShareModule { }

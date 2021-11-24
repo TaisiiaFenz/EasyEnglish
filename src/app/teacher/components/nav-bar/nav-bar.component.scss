@@ -1,0 +1,35 @@
+.section {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  color: var(--gray-font-main-color);
+  background-color: var(--gray-G0-color);
+  font-size: 20px;
+  line-height: 40px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.menu {
+  display: flex;
+
+  &__item {
+    padding: 0 20px;
+  }
+}
+
+.auth {
+  display: flex;
+
+  &__name {
+    padding: 0 20px;
+  }
+
+  &__logout {
+    padding: 0 20px;
+
+  }
+}
+
+.active-item {
+  color: var(--blue-color);
+}

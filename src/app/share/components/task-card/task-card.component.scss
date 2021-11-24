@@ -1,0 +1,50 @@
+.card {
+  background-color: var(--gray-G0-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 20px;
+
+  &__title-block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__sub-title {
+    color: var(--gray-font-main-color);
+    font-size: 18px;
+  }
+
+  &__title {
+    font-size: 30px;
+    color: var(--gray-font-color);
+    padding-top: 10px;
+    padding-bottom: 5px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: right;
+  }
+
+  &__test {
+    margin-bottom: 70px;
+
+    &__task {
+      margin-top: 25px;
+      font-size: 20px;
+
+      &__answers {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 15px;
+        font-size: 18px;
+      }
+    }
+
+    &__button {
+      float: right;
+      width: 120px;
+      margin-top: 20px;
+    }
+  }
+}

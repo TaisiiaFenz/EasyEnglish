@@ -1,11 +1,25 @@
 <div class="section">
   <app-nav-bar [activeItem]="'homeStudent'"></app-nav-bar>
   <div
-    *ngIf="!showTest"
+    *ngIf="!showTest&&!currentUser.levelOfEnglish"
     (click)="openTest()"
     class="section__button section__button__active"
   >
     Start a test
   </div>
-  <app-freshman-test *ngIf="showTest"></app-freshman-test>
+  <app-freshman-test *ngIf="showTest&&!currentUser.levelOfEnglish"></app-freshman-test>
+  <div
+    *ngIf="currentUser.levelOfEnglish"
+    class="section__info"
+  >
+    <div class="section__info__title">
+      Name of student: <span>{{ currentUser.name }}</span>
+    </div>
+    <div class="section__info__sub-title">
+      Level of English: <span>{{ currentUser.levelOfEnglish }}</span>
+    </div>
+    <div class="section__info__sub-title">
+      Teacher: <span>{{ currentUser.teacher }}</span>
+    </div>
+  </div>
 </div>

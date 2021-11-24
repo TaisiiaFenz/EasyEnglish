@@ -1,0 +1,36 @@
+<div class="section">
+  <div class="menu">
+    <div
+      class="menu__item"
+      [class]="(activeItem == 'homeTeacher') ? 'active-item': ''"
+      routerLink="/homeTeacher"
+    >
+      Home teacher
+    </div>
+    <div
+      class="menu__item"
+      [class]="(activeItem == 'avaliableStudents') ? 'active-item': ''"
+      routerLink="/avaliableStudents"
+    >
+      Avaliable students
+    </div>
+    <div
+      class="menu__item"
+      [class]="(activeItem == 'myStudents') ? 'active-item': ''"
+      routerLink="/myStudents"
+    >
+      My students
+    </div>
+    <div
+      class="menu__item"
+      [class]="(activeItem == 'tasksTeacher') ? 'active-item': ''"
+      routerLink="/tasksTeacher"
+    >
+      Home teacher
+    </div>
+  </div>
+  <div class="auth">
+    <div class="auth__name">Your name</div>
+    <div class="auth__logout">logout</div>
+  </div>
+</div>

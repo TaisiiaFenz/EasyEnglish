@@ -4,6 +4,8 @@ import { HomeStudentComponent } from './components/home-student/home-student.com
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FreshmanTestComponent } from './components/freshman-test/freshman-test.component';
 import {RouterModule} from "@angular/router";
+import { TasksStudentComponent } from './components/tasks-student/tasks-student.component';
+import {ShareModule} from "../share/share.module";
 
 
 
@@ -11,11 +13,13 @@ import {RouterModule} from "@angular/router";
   declarations: [
     HomeStudentComponent,
     NavBarComponent,
-    FreshmanTestComponent
+    FreshmanTestComponent,
+    TasksStudentComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule
-    ]
+  imports: [
+    CommonModule,
+    RouterModule,
+    ShareModule
+  ]
 })
 export class StudentModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { currentUser } from '../../../../data';
 
 @Component({
   selector: 'app-home-student',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeStudentComponent implements OnInit {
 
   public showTest: boolean = false;
+  public currentUser = currentUser;
 
   constructor() { }
 

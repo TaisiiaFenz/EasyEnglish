@@ -17,6 +17,22 @@
   font-family: sans-serif;
 }
 
+.button {
+  height: 50px;
+  line-height: 50px;
+  color: var(--gray-G0-color);
+  border-radius: 5px;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.button-active {
+  width: 200px;
+  background: linear-gradient(0.25turn, var(--blue-color), var(--purple-color), var(--red-color));
+}
+
 input:active, :hover, :focus {
   outline: 0;
   outline-offset: 0;
