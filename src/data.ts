@@ -33,15 +33,15 @@ export let users: proUser[] = [
 ];
 
 export let currentUser: proUser[] = [
-    {
-    user: {
-      name: 'T',
-      surname: 'F',
-      role: 'Teacher',
-      login: 't@f',
-      password: '123'
-    }
-  }
+  //   {
+  //   user: {
+  //     name: 'T',
+  //     surname: 'F',
+  //     role: 'Teacher',
+  //     login: 't@f',
+  //     password: '123'
+  //   }
+  // }
 ];
 
 //export const changeLevelOfEnglish = (level: string) => currentUser.levelOfEnglish = level;
