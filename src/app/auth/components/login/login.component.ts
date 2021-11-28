@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
 
   loginSubmit(): void {
     console.log(users);
+    currentUser.splice(0,currentUser.length);
     users.forEach((user) => {
       if ((user.user.login === this.formGroup.get('login')?.value)&&
         (user.user.password === this.formGroup.get('password')?.value)) {

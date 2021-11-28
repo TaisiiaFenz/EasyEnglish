@@ -2,16 +2,16 @@
   <app-nav-bar [activeItem]="'avaliableStudents'"></app-nav-bar>
 
   <div class="cards">
-    <div class="card">
+    <div class="card" *ngFor="let student of avaliableStudents">
       <div>
         <div class="card__title">
-          Name of student: <span>Oleg Petrov</span>
+          Name of student: <span>{{ student.user.name }} {{student.user.surname}}</span>
         </div>
         <div class="card__sub-title">
-          Level of English: <span>B2</span>
+          Level of English: <span>{{ student.levelOfEnglish }}</span>
         </div>
       </div>
-      <div class="button button-active card__button">
+      <div class="button button-active card__button" (click)="addStudent(student)">
         Add student
       </div>
     </div>
