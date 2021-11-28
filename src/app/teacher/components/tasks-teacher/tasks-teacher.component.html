@@ -1,3 +1,86 @@
 <div class="section">
   <app-nav-bar [activeItem]="'tasksTeacher'"></app-nav-bar>
+
+  <div class="button-active button section__button" (click)="isTaskConstructorOpen = true">
+    Add new task
+  </div>
+  <div class="tasks">
+    <div
+      *ngIf="isTaskConstructorOpen"
+      class="card"
+      [formGroup]="formGroup"
+    >
+      <input class="card__input" placeholder="Enter task title" formControlName="taskTitle">
+      <div class="card__sub-title">Enter task information</div>
+      <textarea class="card__input card__textarea" formControlName="taskInfo"></textarea>
+
+      <div class="card__test">
+        <div class="card__test__task">
+          <input class="card__input big-input" placeholder="Enter first question" formControlName="question_1">
+          <div class="card__test__task__answers">
+
+            <label class="answer">
+              <input type="checkbox" class="answer__radio-button" formControlName="answerCorrect_1_1">
+              <input class="label" formControlName="answerOption_1_1">
+            </label>
+
+            <label class="answer">
+              <input type="checkbox" class="answer__radio-button" formControlName="answerCorrect_1_2">
+              <input class="label" formControlName="answerOption_1_2">
+            </label>
+
+            <label class="answer">
+              <input type="checkbox" class="answer__radio-button" formControlName="answerCorrect_1_3">
+              <input class="label" formControlName="answerOption_1_3">
+            </label>
+          </div>
+        </div>
+
+        <div class="card__test__task">
+          <input class="card__input big-input" placeholder="Enter second question" formControlName="question_2">
+          <div class="card__test__task__answers">
+
+            <label class="answer">
+              <input type="checkbox" class="answer__radio-button" formControlName="answerCorrect_2_1">
+              <input class="label" formControlName="answerOption_2_1">
+            </label>
+
+            <label class="answer">
+              <input type="checkbox" class="answer__radio-button" formControlName="answerCorrect_2_2">
+              <input class="label" formControlName="answerOption_2_2">
+            </label>
+
+            <label class="answer">
+              <input type="checkbox" class="answer__radio-button" formControlName="answerCorrect_2_3">
+              <input class="label" formControlName="answerOption_2_3">
+            </label>
+          </div>
+        </div>
+        <div class="card__test__task">
+          <input class="card__input big-input" placeholder="Enter third question" formControlName="question_3">
+          <div class="card__test__task__answers">
+
+            <label class="answer">
+              <input type="checkbox" class="answer__radio-button" formControlName="answerCorrect_3_1">
+              <input class="label" formControlName="answerOption_3_1">
+            </label>
+
+            <label class="answer">
+              <input type="checkbox" class="answer__radio-button" formControlName="answerCorrect_3_2">
+              <input class="label" formControlName="answerOption_3_2">
+            </label>
+
+            <label class="answer">
+              <input type="checkbox" class="answer__radio-button" formControlName="answerCorrect_3_3">
+              <input class="label" formControlName="answerOption_3_3">
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="button-block">
+        <div class="button button-cancel" (click)="closeTaskConstructor()">Cancel</div>
+        <div class="button button-active" (click)="saveTask()">Save task</div>
+      </div>
+    </div>
+  </div>
 </div>

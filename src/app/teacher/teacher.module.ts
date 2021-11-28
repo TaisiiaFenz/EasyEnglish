@@ -6,6 +6,7 @@ import { AvaliableStudentsComponent } from './components/avaliable-students/aval
 import { MyStudentsComponent } from './components/my-students/my-students.component';
 import { TasksTeacherComponent } from './components/tasks-teacher/tasks-teacher.component';
 import {RouterModule} from "@angular/router";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {RouterModule} from "@angular/router";
   ],
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        ReactiveFormsModule
     ]
 })
 export class TeacherModule { }
