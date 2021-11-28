@@ -5,6 +5,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AvaliableStudentsComponent } from './components/avaliable-students/avaliable-students.component';
 import { MyStudentsComponent } from './components/my-students/my-students.component';
 import { TasksTeacherComponent } from './components/tasks-teacher/tasks-teacher.component';
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -15,8 +16,9 @@ import { TasksTeacherComponent } from './components/tasks-teacher/tasks-teacher.
     MyStudentsComponent,
     TasksTeacherComponent
   ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule
+    ]
 })
 export class TeacherModule { }

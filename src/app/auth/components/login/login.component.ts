@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {currentUser, users} from "../../../../data";
 
 @Component({
   selector: 'app-login',
@@ -25,11 +26,22 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit(): void {
-    this.router.navigate(['homeStudent']);
+    console.log(users);
+    users.forEach((user) => {
+      if ((user.user.login === this.formGroup.get('login')?.value)&&
+        (user.user.password === this.formGroup.get('password')?.value)) {
+        if (user.user.role === 'Student') {
+          this.router.navigate(['homeStudent']);
+        } else {
+          this.router.navigate(['homeTeacher']);
+        }
+        currentUser.push(user);
+        return;
+      }
+    });
   }
 
   register(): void {
     this.router.navigate(['register']);
   }
-
 }

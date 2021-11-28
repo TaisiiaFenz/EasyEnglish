@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { users } from '../../../../data'
+import {User} from "../../../../types";
 
 @Component({
   selector: 'app-register',
@@ -29,6 +31,15 @@ export class RegisterComponent implements OnInit {
   }
 
   submit(): void {
+    const newUser: User = {
+      name: this.formGroup.get('name')?.value,
+      surname: this.formGroup.get('surname')?.value,
+      role: this.formGroup.get('role')?.value,
+      login: this.formGroup.get('login')?.value,
+      password: this.formGroup.get('password')?.value
+    };
+    users.push({user: newUser});
+    console.log(users);
     this.router.navigate(['login']);
   }
 

@@ -1,0 +1,78 @@
+.section {
+  background-color: var(--bg-color);
+  width: 100%;
+  height: 130vh;
+}
+
+.cards {
+  padding-top: 40px;
+}
+
+.card {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--gray-G0-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 40px;
+  margin-bottom: 30px;
+
+  &__title {
+    font-size: 30px;
+    color: var(--gray-font-color);
+
+    span {
+
+    }
+  }
+
+  &__sub-title {
+    color: var(--gray-font-main-color);
+    font-size: 18px;
+    padding-top: 10px;
+
+    span {
+      color: var(--gray-font-color);
+      font-size: 22px;
+    }
+  }
+
+  &__tasks {
+
+  }
+
+  &__exercise {
+    width: 45%;
+    padding: 60px 20px;
+
+    &__title-block {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__sub-title {
+      color: var(--gray-font-main-color);
+      font-size: 18px;
+    }
+
+    &__title {
+      font-size: 30px;
+      color: var(--gray-font-color);
+      padding-top: 10px;
+      padding-bottom: 5px;
+    }
+
+    &__task {
+      margin-top: 25px;
+      font-size: 20px;
+
+      &__answers {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 15px;
+        font-size: 18px;
+      }
+    }
+  }
+}

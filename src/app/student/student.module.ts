@@ -6,6 +6,7 @@ import { FreshmanTestComponent } from './components/freshman-test/freshman-test.
 import {RouterModule} from "@angular/router";
 import { TasksStudentComponent } from './components/tasks-student/tasks-student.component';
 import {ShareModule} from "../share/share.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -16,10 +17,11 @@ import {ShareModule} from "../share/share.module";
     FreshmanTestComponent,
     TasksStudentComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    ShareModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        ShareModule,
+        ReactiveFormsModule
+    ]
 })
 export class StudentModule { }
