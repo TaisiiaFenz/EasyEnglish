@@ -7,6 +7,7 @@ export interface User {
 }
 
 export interface Task {
+  status?: string,
   taskTitle: string,
   taskInfo: string,
   tests: Test[]

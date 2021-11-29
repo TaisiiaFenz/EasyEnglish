@@ -1,62 +1,33 @@
 <div class="card">
   <div class="card__title-block">
     <div class="card__sub-title">
-      Task 1
+      {{ taskNumber }}
     </div>
     <div class="card__sub-title">
-      TO DO
+      {{ task.status }}
     </div>
   </div>
   <div class="card__title">
-    Articles
+    {{ task.taskTitle }}
   </div>
   <div>
-    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+    {{ task.taskInfo }}
   </div>
   <div class="card__button card__sub-title" (click)="openTest()">
     MORE
   </div>
   <div *ngIf="isOpenedTest" class="card__test">
-    <div class="card__test__task">
+    <div class="card__test__task" *ngFor="let test of task.tests; let i = index">
       <div class="card__test__task__title">
-        1. What __ you doing in this place?
+        {{ test.question }}
       </div>
       <div class="card__test__task__answers">
-        <div class="card__test__task__answer">
-          <input type="radio" id="freshman_1_1" name="freshman_1" value="are">
-          <label for="freshman_1_1">are</label>
-        </div>
-        <div class="card__test__task__answer">
-          <input type="radio" id="freshman_1_2" name="freshman_1" value="is">
-          <label for="freshman_1_2">is</label>
-        </div>
-        <div class="card__test__task__answer">
-          <input type="radio" id="freshman_1_3" name="freshman_1" value="do">
-          <label for="freshman_1_3">do</label>
-        </div>
-      </div>
-    </div>
-    <div class="card__test__task">
-      <div class="card__test__task__title">
-        2. What __ you doing in this place?
-      </div>
-      <div class="card__test__task__answers">
-        <div class="card__test__task__answer">
-          <input type="radio" id="freshman_2_1" name="freshman_2" value="are">
-          <label for="freshman_2_1">are</label>
-        </div>
-        <div class="card__test__task__answer">
-          <input type="radio" id="freshman_2_2" name="freshman_2" value="is">
-          <label for="freshman_2_2">is</label>
-        </div>
-        <div class="card__test__task__answer">
-          <input type="radio" id="freshman_2_3" name="freshman_2" value="do">
-          <label for="freshman_2_3">do</label>
-        </div>
+        <label class="card__test__task__answer"
+               *ngFor="let answer of test.answers; let j = index"
+               [class.greenbg]="isDone&&answer.correct">
+          <input type="checkbox" [name]=i (change)="onAnswer(i, j)" [class.greenbg]="isDone">
+          {{ answer.option }}
+        </label>
       </div>
     </div>
     <div class="card__test__button button button-active" (click)="saveCard()">
