@@ -82,5 +82,25 @@
         <div class="button button-active" (click)="saveTask()">Save task</div>
       </div>
     </div>
+
+    <div class="card" *ngFor="let task of tasksTeacher">
+      <div class="card__title">
+        {{ task.taskTitle }}
+      </div>
+      <div>
+        {{ task.taskInfo }}
+      </div>
+      <div class="card__task" *ngFor="let test of task.tests; let i = index">
+        <div class="card__task__title">
+          {{ test.question }}
+        </div>
+        <div class="card__task__answers">
+          <label class="card__task__answer" *ngFor="let answer of test.answers">
+            <input type="radio" [name]=i [checked]="answer.correct"/>
+            {{ answer.option }}
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

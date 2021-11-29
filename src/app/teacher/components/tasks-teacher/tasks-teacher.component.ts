@@ -14,6 +14,8 @@ export class TasksTeacherComponent implements OnInit {
 
   public isTaskConstructorOpen: boolean = false;
 
+  public tasksTeacher = currentUser[0].tasks;
+
   constructor() { }
 
   ngOnInit(): void {
