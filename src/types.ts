@@ -8,6 +8,7 @@ export interface User {
 
 export interface Task {
   status?: string,
+  studentAnswers?: number[],
   taskTitle: string,
   taskInfo: string,
   tests: Test[]

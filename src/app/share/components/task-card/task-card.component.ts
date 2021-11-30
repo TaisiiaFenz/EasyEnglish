@@ -38,7 +38,8 @@ export class TaskCardComponent implements OnInit {
 
   saveCard(): void {
     console.log(this.answers);
-    //this.isOpenedTest = !this.isOpenedTest;
+    this.task.studentAnswers = this.answers;
+    console.log(this.task);
     this.isDone = true;
   }
 
