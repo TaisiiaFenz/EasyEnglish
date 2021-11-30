@@ -39,7 +39,9 @@
   }
 
   &__tasks {
-
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   &__exercise {
@@ -74,5 +76,24 @@
         font-size: 18px;
       }
     }
+  }
+}
+
+.greenbg {
+  border: 2px solid var(--green-color);
+  padding: 10px;
+  border-radius: 30px;
+}
+
+.dropdown {
+  width: 500px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+
+  option {
+    width: 500px;
   }
 }

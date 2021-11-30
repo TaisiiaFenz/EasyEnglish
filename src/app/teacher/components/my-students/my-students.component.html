@@ -2,75 +2,54 @@
   <app-nav-bar [activeItem]="'myStudents'"></app-nav-bar>
 
   <div class="cards">
-    <div class="card">
+    <div class="card" *ngFor="let student of myStudents">
       <div>
         <div class="card__title">
-          Name of student: <span>Oleg Petrov</span>
+          Name of student: <span>{{ student.user.name }} {{ student.user.surname }}</span>
         </div>
         <div class="card__sub-title">
-          Level of English: <span>B2</span>
+          Level of English: <span>{{ student.levelOfEnglish }}</span>
         </div>
       </div>
       <div class="card__tasks">
-        <div class="card__exercise">
+        <div class="card__exercise" *ngFor="let exercise of student.tasks; let i = index">
           <div class="card__exercise__title-block">
             <div class="card__exercise__sub-title">
-              Task 1
+              Task {{ i + 1 }}
             </div>
             <div class="card__exercise__sub-title">
-              TO DO
+              {{ exercise.status }}
             </div>
           </div>
           <div class="card__exercise__title">
-            Articles
+            {{ exercise.taskTitle }}
           </div>
           <div>
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+            {{ exercise.taskInfo }}
           </div>
           <div class="card__exercise__test">
-            <div class="card__exercise__task">
+            <div class="card__exercise__task" *ngFor="let task of exercise.tests; let j = index">
               <div class="card__exercise__task__title">
-                1. What __ you doing in this place?
+                {{ task.question }}
               </div>
               <div class="card__exercise__task__answers">
-                <div class="card__exercise__task__answer">
-                  <input type="radio" id="freshman_1_1" name="freshman_1" value="are" checked>
-                  <label for="freshman_1_1">are</label>
-                </div>
-                <div class="card__exercise__task__answer">
-                  <input type="radio" id="freshman_1_2" name="freshman_1" value="is">
-                  <label for="freshman_1_2">is</label>
-                </div>
-                <div class="card__exercise__task__answer">
-                  <input type="radio" id="freshman_1_3" name="freshman_1" value="do">
-                  <label for="freshman_1_3">do</label>
-                </div>
-              </div>
-            </div>
-            <div class="card__exercise__task">
-              <div class="card__exercise__task__title">
-                2. What __ you doing in this place?
-              </div>
-              <div class="card__exercise__task__answers">
-                <div class="card__exercise__task__answer">
-                  <input type="radio" id="freshman_2_1" name="freshman_2" value="are">
-                  <label for="freshman_2_1">are</label>
-                </div>
-                <div class="card__exercise__task__answer">
-                  <input type="radio" id="freshman_2_2" name="freshman_2" value="is">
-                  <label for="freshman_2_2">is</label>
-                </div>
-                <div class="card__exercise__task__answer">
-                  <input type="radio" id="freshman_2_3" name="freshman_2" value="do" checked>
-                  <label for="freshman_2_3">do</label>
-                </div>
+                <label class="card__exercise__task__answer"
+                     *ngFor="let answer of task.answers; let m = index"
+                     [class.greenbg]="answer.correct">
+                  <input type="radio" [name]=j [checked]="isStudentAnswer(exercise, j, m)" disabled="true">
+                  {{ answer.option }}
+                </label>
               </div>
             </div>
           </div>
+        </div>
+        <div class="card__exercise" [formGroup]="formGroup">
+          <div for="tasks">Choose a task:</div>
+
+          <select id="tasks" class="dropdown" (change)="onAddTask(student)" formControlName="dropdown">
+            <option value="none">None</option>
+            <option [value]="task.taskTitle" *ngFor="let task of myTasks">{{ task.taskTitle }}</option>
+          </select>
         </div>
       </div>
     </div>

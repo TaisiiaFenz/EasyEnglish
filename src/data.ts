@@ -2,6 +2,7 @@ import {Answer, proUser, Task} from "./types";
 
 let customTask: Task = {
   status: 'TO DO',
+  studentAnswers: [1, 1, 1],
   taskTitle: 'Articles',
   taskInfo: "The verb have has the forms:" +
     " have, has, having, had. The base form of the verb is have." +
@@ -70,7 +71,8 @@ export let users: proUser[] = [
       login: 't@f',
       password: '123'
     },
-    levelOfEnglish: 'B1'
+    levelOfEnglish: 'B1',
+    tasks: [customTask]
   },
   {
     user: {
@@ -99,10 +101,11 @@ export let currentUser: proUser[] = [
       user: {
       name: 'T',
       surname: 'F',
-      role: 'Students',
+      role: 'Teacher',
       login: 't@f',
       password: '123'
     },
+      students: [users[0], users[1]],
       tasks: [customTask]
   }
 ];
