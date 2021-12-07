@@ -83,7 +83,7 @@
       </div>
     </div>
 
-    <div class="card" *ngFor="let task of tasksTeacher">
+    <div class="card" *ngFor="let task of tasksTeacher; let j = index">
       <div class="card__title">
         {{ task.taskTitle }}
       </div>
@@ -96,7 +96,7 @@
         </div>
         <div class="card__task__answers">
           <label class="card__task__answer" *ngFor="let answer of test.answers">
-            <input type="radio" [name]=i [checked]="answer.correct"/>
+            <input type="radio" [name]=j*10+i [checked]="answer.correct"/>
             {{ answer.option }}
           </label>
         </div>

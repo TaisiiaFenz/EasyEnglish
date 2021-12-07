@@ -76,6 +76,7 @@ export class TasksTeacherComponent implements OnInit {
       currentUser[0].tasks = [];
     }
     currentUser[0].tasks.push(task);
+    this.isTaskConstructorOpen = false;
   }
 
   closeTaskConstructor(): void {

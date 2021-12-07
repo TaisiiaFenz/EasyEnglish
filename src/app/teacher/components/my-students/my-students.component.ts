@@ -24,9 +24,13 @@ export class MyStudentsComponent implements OnInit {
   }
 
   isStudentAnswer(exercise: any, i: number, j: number) {
-    const studentAnswers = exercise.studentAnswers;
-    if (studentAnswers[i] === j){
-      return true;
+    if (exercise.status === "DONE") {
+      const studentAnswers = exercise.studentAnswers;
+      console.log(studentAnswers);
+      console.log(j);
+      if (studentAnswers[i] === j) {
+        return true;
+      }
     }
     return false;
   }
@@ -35,6 +39,8 @@ export class MyStudentsComponent implements OnInit {
     console.log(this.formGroup.get('dropdown')?.value);
     currentUser[0]?.tasks?.forEach((task) => {
       if (task.taskTitle == this.formGroup.get('dropdown')?.value) {
+        let newTask = JSON.parse(JSON.stringify(task));
+        newTask.status = "TO DO";
         student.tasks.push(task);
       }
     });

@@ -1,9 +1,9 @@
 import {Answer, proUser, Task} from "./types";
 
-let customTask: Task = {
-  status: 'TO DO',
-  studentAnswers: [1, 1, 1],
-  taskTitle: 'Articles',
+let customTask1: Task = {
+  //status: 'TO DO',
+  // studentAnswers: [1, 1, 1],
+  taskTitle: 'Using have',
   taskInfo: "The verb have has the forms:" +
     " have, has, having, had. The base form of the verb is have." +
     " The present participle is having. The past tense and past participle form is had.",
@@ -62,50 +62,193 @@ let customTask: Task = {
   ]
 };
 
-export let users: proUser[] = [
-  {
-    user: {
-      name: "Taya",
-      surname: 'Fenz',
-      role: 'Student',
-      login: 't@f',
-      password: '123'
+let customTask2: Task = {
+  //status: 'TO DO',
+  // studentAnswers: [1, 1, 1],
+  taskTitle: 'Past Simple',
+  taskInfo: "The past simple shows us that an action was in the past," +
+    " not in the present. Regular past simple verbs have -ed at the end" +
+    " (e.g. called, played, arrived). Irregular verbs have a different form," +
+    " usually with a different vowel sound (e.g. wake → woke, break → broke, feel → felt).",
+  tests: [
+    {
+      question: "I (to invite) __ your friend to the party.",
+      answers: [
+        {
+          option: "invited",
+          correct: true
+        },
+        {
+          option: "invite",
+          correct: false
+        },
+        {
+          option: "had invited",
+          correct: false
+        }
+      ]
     },
-    levelOfEnglish: 'B1',
-    tasks: [customTask]
+    {
+      question: "Paul (to find) __ a good and inexpensive hotel.",
+      answers: [
+        {
+          option: "finds",
+          correct: false
+        },
+        {
+          option: "finded",
+          correct: false
+        },
+        {
+          option: "found",
+          correct: true
+        }
+      ]
+    },
+    {
+      question: "We (to understand) __ each other.",
+      answers: [
+        {
+          option: "understanded",
+          correct: false
+        },
+        {
+          option: "understood",
+          correct: true
+        },
+        {
+          option: "understand",
+          correct: false
+        }
+      ]
+    }
+  ]
+};
+
+let myTask: Task = {
+  status: "TO DO",
+  taskTitle: 'Past Simple',
+  taskInfo: "The past simple shows us that an action was in the past," +
+    " not in the present. Regular past simple verbs have -ed at the end" +
+    " (e.g. called, played, arrived). Irregular verbs have a different form," +
+    " usually with a different vowel sound (e.g. wake → woke, break → broke, feel → felt).",
+  tests: [
+    {
+      question: "I (to invite) __ your friend to the party.",
+      answers: [
+        {
+          option: "invited",
+          correct: true
+        },
+        {
+          option: "invite",
+          correct: false
+        },
+        {
+          option: "had invited",
+          correct: false
+        }
+      ]
+    },
+    {
+      question: "Paul (to find) __ a good and inexpensive hotel.",
+      answers: [
+        {
+          option: "finds",
+          correct: false
+        },
+        {
+          option: "finded",
+          correct: false
+        },
+        {
+          option: "found",
+          correct: true
+        }
+      ]
+    },
+    {
+      question: "We (to understand) __ each other.",
+      answers: [
+        {
+          option: "understanded",
+          correct: false
+        },
+        {
+          option: "understood",
+          correct: true
+        },
+        {
+          option: "understand",
+          correct: false
+        }
+      ]
+    }
+  ]
+};
+
+export let teacher1: proUser = {
+  user: {
+    name: 'Bob',
+    surname: 'Marley',
+    role: 'Teacher',
+    login: 'bob@gmail.com',
+    password: '123'
   },
+  tasks: [customTask1],
+};
+
+export let user1: proUser =  {
+  user: {
+    name: "Taya",
+    surname: 'Fenz',
+    role: 'Student',
+    login: 'taya@gmail.com',
+    password: '123'
+  },
+  levelOfEnglish: 'B1',
+  tasks: [myTask],
+  teacher: teacher1
+};
+
+export let teacher2: proUser = {
+  user: {
+    name: 'Bob',
+    surname: 'Bingo',
+    role: 'Teacher',
+    login: 'teacher@gmail.com',
+    password: '123'
+  },
+  tasks: [customTask1],
+  students: [user1]
+};
+
+export let users: proUser[] = [
+ user1,
   {
     user: {
       name: "Alica",
       surname: 'Fiar',
       role: 'Student',
-      login: 't@fia',
+      login: 't@gmail.com',
       password: '123'
     },
     levelOfEnglish: 'A2'
   },
-  {
-    user: {
-      name: 'T',
-      surname: 'F',
-      role: 'Teacher',
-      login: 'ta@fe',
-      password: '123'
-    },
-    tasks: [customTask]
-  }
+ teacher1,
+  teacher2
 ];
 
 export let currentUser: proUser[] = [
-    {
-      user: {
-      name: 'T',
-      surname: 'F',
-      role: 'Teacher',
-      login: 't@f',
-      password: '123'
-    },
-      students: [users[0], users[1]],
-      tasks: [customTask]
-  }
+  //   {
+  //     user: {
+  //     name: 'T',
+  //     surname: 'F',
+  //     role: 'Teacher',
+  //     login: 't@f',
+  //     password: '123'
+  //   },
+  //     students: [users[0], users[1]],
+  //     tasks: [customTask]
+  // }
 ];

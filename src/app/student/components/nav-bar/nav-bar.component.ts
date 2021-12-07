@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {currentUser} from "../../../../data";
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,6 +9,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   @Input() activeItem: string;
+
+  public currentUser = currentUser[0];
 
   constructor() { }
 

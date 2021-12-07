@@ -25,7 +25,7 @@
         <label class="card__test__task__answer"
                *ngFor="let answer of test.answers; let j = index"
                [class.greenbg]="isDone&&answer.correct">
-          <input type="checkbox" [name]=i (change)="onAnswer(i, j)" [class.greenbg]="isDone">
+          <input type="radio" [name]=i (change)="onAnswer(i, j)" [class.greenbg]="isDone">
           {{ answer.option }}
         </label>
       </div>
