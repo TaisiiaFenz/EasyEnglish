@@ -38,10 +38,17 @@ export class TaskCardComponent implements OnInit {
 
   saveCard(): void {
     console.log(this.answers);
-    this.task.studentAnswers = this.answers;
-    this.task.status = "DONE";
-    console.log(this.task);
-    this.isDone = true;
+    const emptyAnswer = this.answers.find(item => item === -1);
+    let isEmptyAnswer = false;
+    if (emptyAnswer) {
+      isEmptyAnswer = confirm("You don`t answer on all questions. Do you want to save all answers?");
+    }
+    if (isEmptyAnswer) {
+      this.task.studentAnswers = this.answers;
+      this.task.status = "DONE";
+      console.log(this.task);
+      this.isDone = true;
+    }
   }
 
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {currentUser, users} from "../../../../data";
+import {MainService} from "../../../share/main.service";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,9 @@ export class LoginComponent implements OnInit {
 
   public formGroup: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private mainService: MainService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -26,7 +29,11 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit(): void {
-    console.log(users);
+    console.log(currentUser);
+    this.mainService.getUsersList()
+      .subscribe(users => {
+        console.log(users);
+      });
     currentUser.splice(0,currentUser.length);
     users.forEach((user) => {
       if ((user.user.login === this.formGroup.get('login')?.value)&&

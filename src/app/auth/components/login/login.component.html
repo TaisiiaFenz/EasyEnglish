@@ -3,7 +3,10 @@
     <form [formGroup]="formGroup">
       <div class="card__title">Welcome</div>
       <input formControlName="login" placeholder="Login" class="card__input">
-      <input formControlName="password" placeholder="Password" class="card__input">
+      <div class="error-message" *ngIf="formGroup.get('login')?.hasError('required')">Field is required</div>
+      <div class="error-message" *ngIf="formGroup.get('login')?.hasError('email')">Please enter correct email</div>
+      <input formControlName="password" placeholder="Password" class="card__input" type="password">
+      <div class="error-message" *ngIf="formGroup.get('password')?.hasError('required')">Field is required</div>
       <div class="card__buttons">
         <button class="card__button card__button__login"
                 mat-button
