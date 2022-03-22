@@ -40,7 +40,6 @@ export class RegisterComponent implements OnInit {
       login: this.formGroup.get('login')?.value,
       password: this.formGroup.get('password')?.value
     };
-    //users.push({user: newUser});
 
     this.mainService.addUser({user: newUser})
       .subscribe(user => {

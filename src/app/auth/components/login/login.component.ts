@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {currentUser, users} from "../../../../data";
+import { proUser } from 'src/types';
+import {currentUser } from "../../../../data";
 import {MainService} from "../../../share/main.service";
 
 @Component({
@@ -12,6 +13,7 @@ import {MainService} from "../../../share/main.service";
 export class LoginComponent implements OnInit {
 
   public formGroup: FormGroup;
+  public users: proUser[] = [];
 
   constructor(
     private router: Router,
@@ -29,13 +31,11 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit(): void {
-    console.log(currentUser);
     this.mainService.getUsersList()
       .subscribe(users => {
-        console.log(users);
+        this.users = users;
       });
-    currentUser.splice(0,currentUser.length);
-    users.forEach((user) => {
+    this.users.forEach((user) => {
       if ((user.user.login === this.formGroup.get('login')?.value)&&
         (user.user.password === this.formGroup.get('password')?.value)) {
         if (user.user.role === 'Student') {
@@ -43,7 +43,10 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(['homeTeacher']);
         }
-        currentUser.push(user);
+        this.mainService.updateCurrentUser(user)
+        .subscribe(res => {
+          console.log(res);
+        });
         return;
       }
     });

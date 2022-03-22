@@ -25,8 +25,29 @@ export class MainService {
         if (!users) {
           return [];
         }
-        return users;
+        return Object.values(users);
     }));
   }
 
+  updateCurrentUser(user: proUser): Observable<proUser> {
+    this.deleteCurrentUser().subscribe(res => {});
+    return this.http.put<proUser>(`${MainService.url}/currentUser.json`, user)
+    .pipe(map(res => {
+      return res;
+    }));
+  }
+
+  getCurrentUser(): Observable<proUser> {
+    return this.http.get<proUser>(`${MainService.url}/currentUser.json`)
+    .pipe(map(user => {
+      return user;
+  }));
+  }
+
+  deleteCurrentUser(): Observable<proUser> {
+    return this.http.delete<proUser>(`${MainService.url}/currentUser.json`)
+    .pipe(map(res => {
+      return res;
+    }));
+  }
 }
