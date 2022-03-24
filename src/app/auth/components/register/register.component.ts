@@ -11,7 +11,7 @@ import { MainService } from "../../../share/main.service";
 })
 export class RegisterComponent implements OnInit {
 
-  public formGroup: FormGroup;
+  public formGroup!: FormGroup;
 
   constructor (
     private router: Router,

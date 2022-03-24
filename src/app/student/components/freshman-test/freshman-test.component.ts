@@ -1,4 +1,7 @@
-import {Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
+import { FreshmanTestService } from 'src/app/share/freshman-test.service';
+import { MainService } from 'src/app/share/main.service';
+import { proUser, Test } from 'src/types';
 import {currentUser} from "../../../../data";
 import {test} from "./freshmanTestMock";
 
@@ -9,14 +12,25 @@ import {test} from "./freshmanTestMock";
 })
 export class FreshmanTestComponent implements OnInit {
 
-  public freshmanTest = test;
+  @Input() currentUser: proUser;
+
+  public freshmanTest: Test[] = [];
+  public levelOfEnglishOfCurrentUser: string = '';
   private answers: boolean[] = [];
 
-  constructor() { }
+  constructor(
+    private mainService: MainService,
+    private freshmanTestService: FreshmanTestService
+  ) { }
 
   ngOnInit(): void {
-    this.answers.length = this.freshmanTest.length;
-    this.answers.fill(false);
+    this.freshmanTestService.getFreshmanTest()
+    .subscribe(freshmanTest => {
+      this.freshmanTest = freshmanTest;
+
+      this.answers.length = this.freshmanTest.length;
+      this.answers.fill(false);
+    })
   }
 
   onAnswer(i: number, isCorrect: boolean) {
@@ -30,17 +44,29 @@ export class FreshmanTestComponent implements OnInit {
     console.log(result);
     let percentResult = result * 100 / this.answers.length;
     if (percentResult === 100) {
-      currentUser[0].levelOfEnglish = 'C1';
+      this.levelOfEnglishOfCurrentUser = 'C1';
     } else if ((percentResult >= 80)&&(percentResult < 100)) {
-      currentUser[0].levelOfEnglish = 'B2';
+      this.levelOfEnglishOfCurrentUser = 'B2';
     } else if ((percentResult >= 60)&&(percentResult < 80)) {
-      currentUser[0].levelOfEnglish = 'B1.2';
+      this.levelOfEnglishOfCurrentUser = 'B1.2';
     } else if ((percentResult >= 40)&&(percentResult < 60)) {
-      currentUser[0].levelOfEnglish = 'B1.1';
+      this.levelOfEnglishOfCurrentUser = 'B1.1';
     } else if ((percentResult >= 20)&&(percentResult < 40)) {
-      currentUser[0].levelOfEnglish = 'A2';
+      this.levelOfEnglishOfCurrentUser = 'A2';
     } else {
-      currentUser[0].levelOfEnglish = 'A1';
+      this.levelOfEnglishOfCurrentUser = 'A1';
     }
+
+    this.currentUser.levelOfEnglish = this.levelOfEnglishOfCurrentUser;
+
+    this.mainService.updateCurrentUser(this.currentUser)
+    .subscribe(res => {
+      console.log(res);
+    })
+
+    // this.freshmanTestService.updateLevelOfEnglishOfCurrentUser(this.currentUser)
+    // .subscribe(res => {
+    //   console.log(res);
+    // })
   }
 }

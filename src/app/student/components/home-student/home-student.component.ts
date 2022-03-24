@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { currentUser } from '../../../../data';
+import { MainService } from 'src/app/share/main.service';
+import { proUser } from 'src/types';
 
 @Component({
   selector: 'app-home-student',
@@ -9,11 +10,16 @@ import { currentUser } from '../../../../data';
 export class HomeStudentComponent implements OnInit {
 
   public showTest: boolean = false;
-  public currentUser = currentUser;
+  public currentUser: proUser;
 
-  constructor() { }
+  constructor(
+    private mainService: MainService) { }
 
   ngOnInit(): void {
+    this.mainService.getCurrentUser()
+    .subscribe(user => {
+      this.currentUser = user;
+    })
   }
 
   openTest(): void {

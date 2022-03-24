@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {currentUser} from "../../../../data";
+import { MainService } from 'src/app/share/main.service';
+import { proUser } from 'src/types';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,13 +9,19 @@ import {currentUser} from "../../../../data";
 })
 export class NavBarComponent implements OnInit {
 
-  @Input() activeItem: string;
+  @Input() activeItem: string | undefined;
 
-  public currentUser = currentUser[0];
+  public currentUser: proUser | undefined;
 
-  constructor() { }
+  constructor(
+    private mainService: MainService
+  ) { }
 
   ngOnInit(): void {
+    this.mainService.getCurrentUser()
+    .subscribe(user => {
+      this.currentUser = user;
+    })
   }
 
 }

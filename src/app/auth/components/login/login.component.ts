@@ -12,7 +12,7 @@ import {MainService} from "../../../share/main.service";
 })
 export class LoginComponent implements OnInit {
 
-  public formGroup: FormGroup;
+  public formGroup!: FormGroup;
   public users: proUser[] = [];
 
   constructor(

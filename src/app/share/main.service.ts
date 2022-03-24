@@ -3,12 +3,13 @@ import {HttpClient} from "@angular/common/http";
 import { proUser } from "../../types";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
+import { dbUrl } from 'src/urlConfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
-  static url = 'https://easyenglish-b4024-default-rtdb.firebaseio.com/';
+  static url = dbUrl;
 
   constructor(private http: HttpClient) { }
 
