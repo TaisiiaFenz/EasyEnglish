@@ -64,9 +64,18 @@ export class FreshmanTestComponent implements OnInit {
       console.log(res);
     })
 
-    // this.freshmanTestService.updateLevelOfEnglishOfCurrentUser(this.currentUser)
-    // .subscribe(res => {
-    //   console.log(res);
-    // })
+
+    this.mainService.getUsersList()
+    .subscribe(users => {
+      users.forEach(user => {
+        if (user.user.login === this.currentUser.user.login) {
+          user.levelOfEnglish = this.levelOfEnglishOfCurrentUser;
+          console.log(user); 
+        }
+      })
+      console.log(users);
+      this.mainService.updateUsersOfUserList(users);
+    });
+
   }
 }

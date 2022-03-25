@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { proUser } from "../../types";
-import {map} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {map, mergeMap} from "rxjs/operators";
+import {forkJoin, Observable} from "rxjs";
 import { dbUrl } from 'src/urlConfig';
 
 @Injectable({
@@ -45,10 +45,27 @@ export class MainService {
   }));
   }
 
+  deleteUsersList(): Observable<proUser[]> {
+    return this.http.delete<proUser[]>(`${MainService.url}/users.json`)
+    .pipe(map(res => {
+      return res;
+    }));
+  }
+
   deleteCurrentUser(): Observable<proUser> {
     return this.http.delete<proUser>(`${MainService.url}/currentUser.json`)
     .pipe(map(res => {
       return res;
     }));
+  }
+
+  updateUsersOfUserList(users: proUser[]) {
+    const addUsersRequests = forkJoin(users.map(user => this.addUser(user)));
+    this.deleteUsersList().pipe(
+      mergeMap((res) => addUsersRequests))
+    
+
+    // const addUsersRequests = forkJoin(users.map(user => this.addUser(user)))
+    .subscribe(res => console.log(res));
   }
 }
