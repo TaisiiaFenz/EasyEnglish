@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {proUser} from "../../../../types";
-import {currentUser, users} from "../../../../data";
+import { MainService } from 'src/app/share/main.service';
 
 @Component({
   selector: 'app-avaliable-students',
@@ -9,17 +9,30 @@ import {currentUser, users} from "../../../../data";
 })
 export class AvaliableStudentsComponent implements OnInit {
 
+  public currentUser: proUser;
+  public users: proUser[] = [];
   public avaliableStudents: proUser[] = [];
 
-  constructor() { }
+  constructor(
+    private mainService: MainService
+  ) { }
 
   ngOnInit(): void {
-    this.updateAvaliableStudents();
+    this.mainService.getCurrentUser()
+    .subscribe(user => {
+      this.currentUser = user;
+    })
+
+    this.mainService.getUsersList()
+    .subscribe(users => {
+      this.users = users;
+      this.updateAvaliableStudents();
+    });
   }
 
   updateAvaliableStudents() {
     this.avaliableStudents = [];
-    users.forEach((user) => {
+    this.users.forEach((user) => {
       if ((user.levelOfEnglish)&&(!user.teacher)) {
         this.avaliableStudents.push(user);
       }
@@ -27,14 +40,28 @@ export class AvaliableStudentsComponent implements OnInit {
   }
 
   addStudent(student: proUser): void {
-    student.teacher = currentUser[0];
-    if (!currentUser[0].students) {
-      currentUser[0].students = [];
+    student.teacher = JSON.parse(JSON.stringify(this.currentUser));
+
+    this.users?.forEach(user => {
+      if (user?.user?.login == this.currentUser?.user?.login) {
+        if (user && !user?.students) {
+          user.students = [];
+        }
+        user?.students?.push(student);
+      }
+    });
+
+    this.mainService.updateUsersOfUserList(this.users);
+
+    if (this.currentUser && !this.currentUser?.students) {
+      this.currentUser.students = [];
     }
-    currentUser[0].students.push(student);
-    console.log(users);
-    console.log(currentUser);
-    this.updateAvaliableStudents();
+    this.currentUser?.students?.push(student);
+
+    this.mainService.updateCurrentUser(this.currentUser)
+    .subscribe(res => {
+      this.updateAvaliableStudents();
+    })
   }
 
 }
