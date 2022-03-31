@@ -70,10 +70,8 @@ export class FreshmanTestComponent implements OnInit {
       users.forEach(user => {
         if (user.user.login === this.currentUser.user.login) {
           user.levelOfEnglish = this.levelOfEnglishOfCurrentUser;
-          console.log(user); 
         }
       })
-      console.log(users);
       this.mainService.updateUsersOfUserList(users);
     });
 

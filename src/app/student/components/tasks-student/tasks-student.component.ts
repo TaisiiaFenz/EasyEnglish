@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {currentUser} from "../../../../data";
+import { MainService } from 'src/app/share/main.service';
+import { proUser } from 'src/types';
+
 
 @Component({
   selector: 'app-tasks-student',
@@ -8,11 +10,21 @@ import {currentUser} from "../../../../data";
 })
 export class TasksStudentComponent implements OnInit {
 
-  public tasks = currentUser[0].tasks;
+  public tasks: any; 
 
-  constructor() { }
+  public currentUser: proUser | undefined;
+
+  constructor(
+    private mainService: MainService
+  ) { }
 
   ngOnInit(): void {
+    this.mainService.getCurrentUser()
+    .subscribe(user => {
+      this.currentUser = user;
+    })
+
+    this.tasks = this.currentUser?.tasks;
   }
 
   createTaskNumber(i: number): string {

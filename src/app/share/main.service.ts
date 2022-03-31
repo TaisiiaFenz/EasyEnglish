@@ -63,9 +63,6 @@ export class MainService {
     const addUsersRequests = forkJoin(users.map(user => this.addUser(user)));
     this.deleteUsersList().pipe(
       mergeMap((res) => addUsersRequests))
-    
-
-    // const addUsersRequests = forkJoin(users.map(user => this.addUser(user)))
-    .subscribe(res => console.log(res));
+      .subscribe(res => console.log(res));
   }
 }
