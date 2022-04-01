@@ -11,7 +11,7 @@
           Level of English: <span>{{ student.levelOfEnglish }}</span>
         </div>
       </div>
-      <table *ngIf="student.tasks">
+      <table *ngIf="student?.tasks">
         <tr>
           <td>Task</td>
           <td>status</td>
