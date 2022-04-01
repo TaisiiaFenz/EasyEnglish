@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { MainService } from 'src/app/share/main.service';
 import {currentUser} from "../../../../data";
-import {Answer, Task, Test} from "../../../../types";
+import {Answer, proUser, Task, Test} from "../../../../types";
 
 @Component({
   selector: 'app-tasks-teacher',
@@ -14,11 +15,20 @@ export class TasksTeacherComponent implements OnInit {
 
   public isTaskConstructorOpen: boolean = false;
 
-  public tasksTeacher = currentUser[0].tasks;
+  public currentUser: proUser;
+  public tasksTeacher: Task[] | undefined;
 
-  constructor() { }
+  constructor(
+    private mainService: MainService
+  ) { }
 
   ngOnInit(): void {
+    this.mainService.getCurrentUser()
+    .subscribe(user => {
+      this.currentUser = user;
+      this.tasksTeacher = this.currentUser.tasks;
+    })
+
     this.initForm();
   }
 
@@ -72,11 +82,16 @@ export class TasksTeacherComponent implements OnInit {
       tests: tests
     };
     console.log(task);
-    if (!currentUser[0].tasks) {
-      currentUser[0].tasks = [];
+    
+    if (this.currentUser && !this.currentUser?.tasks) {
+      this.currentUser.tasks = [];
     }
-    currentUser[0].tasks.push(task);
-    this.isTaskConstructorOpen = false;
+    this.currentUser?.tasks?.push(task);
+
+    this.mainService.updateCurrentUser(this.currentUser)
+    .subscribe(res => {
+      this.isTaskConstructorOpen = false;
+    })
   }
 
   closeTaskConstructor(): void {
