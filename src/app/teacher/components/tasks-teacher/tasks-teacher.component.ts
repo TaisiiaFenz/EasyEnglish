@@ -17,6 +17,7 @@ export class TasksTeacherComponent implements OnInit {
 
   public currentUser: proUser;
   public tasksTeacher: Task[] | undefined;
+  public users: proUser[] = [];
 
   constructor(
     private mainService: MainService
@@ -28,6 +29,11 @@ export class TasksTeacherComponent implements OnInit {
       this.currentUser = user;
       this.tasksTeacher = this.currentUser.tasks;
     })
+
+    this.mainService.getUsersList()
+    .subscribe(users => {
+      this.users = users;
+    });
 
     this.initForm();
   }
@@ -81,7 +87,17 @@ export class TasksTeacherComponent implements OnInit {
       taskInfo: this.formGroup.get('taskInfo')?.value,
       tests: tests
     };
-    console.log(task);
+
+    this.users?.forEach(user => {
+      if (user?.user?.login == this.currentUser?.user?.login) {
+        if (user && !user?.tasks) {
+          user.tasks = [];
+        }
+        user?.tasks?.push(task);
+      }
+    });
+
+    this.mainService.updateUsersOfUserList(this.users);
     
     if (this.currentUser && !this.currentUser?.tasks) {
       this.currentUser.tasks = [];
@@ -91,6 +107,7 @@ export class TasksTeacherComponent implements OnInit {
     this.mainService.updateCurrentUser(this.currentUser)
     .subscribe(res => {
       this.isTaskConstructorOpen = false;
+      this.tasksTeacher = this.currentUser.tasks;
     })
   }
 

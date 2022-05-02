@@ -11,18 +11,6 @@
           Level of English: <span>{{ student.levelOfEnglish }}</span>
         </div>
       </div>
-      <table *ngIf="student?.tasks">
-        <tr>
-          <td>Task</td>
-          <td>status</td>
-          <td>Percent of right answers</td>
-        </tr>
-        <tr>
-          <td>Task 1</td>
-          <td>DONE</td>
-          <td>30%</td>
-        </tr>
-      </table>
       <div class="card__tasks">
         <div class="card__exercise" *ngFor="let exercise of student.tasks; let i = index">
           <div class="card__exercise__title-block">

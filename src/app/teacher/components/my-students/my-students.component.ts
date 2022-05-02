@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {proUser, Task} from "../../../../types";
-import {currentUser} from "../../../../data";
+import {currentUser, users} from "../../../../data";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { MainService } from 'src/app/share/main.service';
 
@@ -16,6 +16,7 @@ export class MyStudentsComponent implements OnInit {
   public currentUser: proUser;
   public myStudents: proUser[] | undefined;
   public myTasks: Task[] | undefined;
+  public usersList: proUser[] = [];
 
   constructor(
     private mainService: MainService
@@ -27,7 +28,12 @@ export class MyStudentsComponent implements OnInit {
       this.currentUser = user;
       this.myStudents = this.currentUser?.students;
       this.myTasks = this.currentUser?.tasks;
-    })
+    });
+
+    this.mainService.getUsersList()
+    .subscribe(users => {
+      this.usersList = users;
+    });
 
     this.formGroup = new FormGroup({
       dropdown: new FormControl(''),
@@ -48,11 +54,32 @@ export class MyStudentsComponent implements OnInit {
 
   onAddTask(student: any) {
     console.log(this.formGroup.get('dropdown')?.value);
-    currentUser[0]?.tasks?.forEach((task) => {
+    this.currentUser?.tasks?.forEach((task) => {
       if (task.taskTitle == this.formGroup.get('dropdown')?.value) {
         let newTask = JSON.parse(JSON.stringify(task));
         newTask.status = "TO DO";
-        student.tasks.push(task);
+
+        console.log(student);
+        const updateStudent = this.currentUser.students?.find((user) => student.user.login === user.user.login);
+        
+        if (updateStudent && !updateStudent.tasks) {
+          updateStudent.tasks = [];
+        }
+        updateStudent?.tasks?.push(newTask);
+        console.log(this.currentUser);
+        this.mainService.updateCurrentUser(this.currentUser).subscribe(res => {});
+
+        const updateStudentInUsersList = this.usersList?.find((user) => student.user.login === user.user.login);
+        if (updateStudentInUsersList && !updateStudentInUsersList.tasks) {
+          updateStudentInUsersList.tasks = [];
+        }
+        updateStudentInUsersList?.tasks?.push(newTask);
+        console.log(this.usersList);
+
+        const newUsersList = this.usersList.filter((user) => user.user.login !== this.currentUser.user.login);
+        newUsersList.push(this.currentUser);
+        console.log(newUsersList);
+        this.mainService.updateUsersOfUserList(newUsersList);
       }
     });
   }
