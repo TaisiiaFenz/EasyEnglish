@@ -53,20 +53,18 @@ export class MyStudentsComponent implements OnInit {
   }
 
   onAddTask(student: any) {
-    console.log(this.formGroup.get('dropdown')?.value);
     this.currentUser?.tasks?.forEach((task) => {
       if (task.taskTitle == this.formGroup.get('dropdown')?.value) {
         let newTask = JSON.parse(JSON.stringify(task));
         newTask.status = "TO DO";
+        newTask.id = this.getRandomId();
 
-        console.log(student);
         const updateStudent = this.currentUser.students?.find((user) => student.user.login === user.user.login);
         
         if (updateStudent && !updateStudent.tasks) {
           updateStudent.tasks = [];
         }
         updateStudent?.tasks?.push(newTask);
-        console.log(this.currentUser);
         this.mainService.updateCurrentUser(this.currentUser).subscribe(res => {});
 
         const updateStudentInUsersList = this.usersList?.find((user) => student.user.login === user.user.login);
@@ -74,14 +72,16 @@ export class MyStudentsComponent implements OnInit {
           updateStudentInUsersList.tasks = [];
         }
         updateStudentInUsersList?.tasks?.push(newTask);
-        console.log(this.usersList);
 
         const newUsersList = this.usersList.filter((user) => user.user.login !== this.currentUser.user.login);
         newUsersList.push(this.currentUser);
-        console.log(newUsersList);
         this.mainService.updateUsersOfUserList(newUsersList);
       }
     });
+  }
+
+  getRandomId() {
+    return Math.floor(Math.random() * 10000);
   }
 
 }

@@ -22,9 +22,9 @@ export class TasksStudentComponent implements OnInit {
     this.mainService.getCurrentUser()
     .subscribe(user => {
       this.currentUser = user;
+      this.tasks = this.currentUser?.tasks;
+      console.log(this.tasks);
     })
-
-    this.tasks = this.currentUser?.tasks;
   }
 
   createTaskNumber(i: number): string {
