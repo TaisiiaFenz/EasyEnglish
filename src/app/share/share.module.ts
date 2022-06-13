@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
 import { TaskCardComponent } from './components/task-card/task-card.component';
-
-
 
 @NgModule({
     declarations: [
@@ -12,7 +11,8 @@ import { TaskCardComponent } from './components/task-card/task-card.component';
         TaskCardComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        AngularFirestoreModule
     ]
 })
 export class ShareModule { }

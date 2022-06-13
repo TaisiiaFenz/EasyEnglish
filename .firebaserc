@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "easyenglish-b4024"
+  },
+  "targets": {
+    "easyenglish-b4024": {
+      "hosting": {
+        "EasyEnglish": [
+          "easyenglish-b4024"
+        ]
+      }
+    }
+  }
+}

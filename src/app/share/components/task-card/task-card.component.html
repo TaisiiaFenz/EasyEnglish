@@ -25,12 +25,12 @@
         <label class="card__test__task__answer"
                *ngFor="let answer of test.answers; let j = index"
                [class.greenbg]="isDone&&answer.correct">
-          <input type="radio" [name]=i (change)="onAnswer(i, j)" [class.greenbg]="isDone" [disabled]="isDone">
+          <input type="radio" [name]=i (change)="onAnswer(i, j)" [checked]="isStudentAnswer(i, j)" [class.greenbg]="isDone" [disabled]="isDone">
           {{ answer.option }}
         </label>
       </div>
     </div>
-    <button class="card__test__button button button-active" (click)="saveCard()" [disabled]="isDone">
+    <button class="button button-active card__test__button" (click)="saveCard()" [disabled]="isDone">
       Save
     </button>
   </div>

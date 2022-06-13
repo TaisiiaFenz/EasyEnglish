@@ -23,7 +23,7 @@ export class TasksStudentComponent implements OnInit {
     .subscribe(user => {
       this.currentUser = user;
       this.tasks = this.currentUser?.tasks;
-      console.log(this.tasks);
+      console.log(this.currentUser);
     })
   }
 

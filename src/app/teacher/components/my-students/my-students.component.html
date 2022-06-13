@@ -1,57 +1,76 @@
 <div class="section">
   <app-nav-bar [activeItem]="'myStudents'"></app-nav-bar>
 
+  <div class="pic">
+
   <div class="cards">
     <div class="card" *ngFor="let student of myStudents">
-      <div>
-        <div class="card__title">
-          Name of student: <span>{{ student.user.name }} {{ student.user.surname }}</span>
+      <div class="card__info">
+        <div>
+          <div class="card__title">
+            Name of student: <span>{{ student.user.name }} {{ student.user.surname }}</span>
+          </div>
+          <div class="card__sub-title">
+            Level of English: <span>{{ student.levelOfEnglish }}</span>
+          </div>
         </div>
-        <div class="card__sub-title">
-          Level of English: <span>{{ student.levelOfEnglish }}</span>
+        <div class="card__dropdown" [formGroup]="formGroup">
+          <div class="card__dropdown__title" for="tasks">Choose a task:</div>
+
+          <div class="select">
+            <select name="format" id="format" id="tasks" class="dropdown" (change)="onAddTask(student)" formControlName="dropdown">
+              <option class="option" value="none" selected disabled>None</option>
+              <option class="option" [value]="task.taskTitle" *ngFor="let task of myTasks">{{ task.taskTitle }}</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div class="card__tasks">
+      <div class="card__tasks scroll">
         <div class="card__exercise" *ngFor="let exercise of student.tasks; let i = index">
-          <div class="card__exercise__title-block">
-            <div class="card__exercise__sub-title">
-              Task {{ i + 1 }}
-            </div>
-            <div class="card__exercise__sub-title">
-              {{ exercise.status }}
-            </div>
-          </div>
-          <div class="card__exercise__title">
-            {{ exercise.taskTitle }}
-          </div>
-          <div>
-            {{ exercise.taskInfo }}
-          </div>
-          <div class="card__exercise__test">
-            <div class="card__exercise__task" *ngFor="let task of exercise.tests; let j = index">
-              <div class="card__exercise__task__title">
-                {{ task.question }}
+          <div class="shadow">
+          <div class="card__exercise__short-form">
+            <div class="card__exercise__title-block">
+              <div class="card__exercise__sub-title">
+                Task {{ i + 1 }}
               </div>
-              <div class="card__exercise__task__answers">
-                <label class="card__exercise__task__answer"
-                     *ngFor="let answer of task.answers; let m = index"
-                     [class.greenbg]="answer.correct">
-                  <input type="radio" [name]=j [checked]="isStudentAnswer(exercise, j, m)" disabled="true">
-                  {{ answer.option }}
-                </label>
+              <div class="card__exercise__sub-title">
+                {{ exercise.status }}
+              </div>
+            </div>
+            <div class="card__exercise__title-block">
+              <div class="card__exercise__title">
+                {{ exercise.taskTitle }}
+              </div>
+              <div class="card__exercise__more" (click)="openTest(exercise)">
+                MORE
               </div>
             </div>
           </div>
-        </div>
-        <div class="card__exercise" [formGroup]="formGroup">
-          <div for="tasks">Choose a task:</div>
-
-          <select id="tasks" class="dropdown" (change)="onAddTask(student)" formControlName="dropdown">
-            <option value="none">None</option>
-            <option [value]="task.taskTitle" *ngFor="let task of myTasks">{{ task.taskTitle }}</option>
-          </select>
+          <div *ngIf="exercise.isOpen" class="card__exercise__long-form">
+            <div>
+              {{ exercise.taskInfo }}
+            </div>
+            <div class="card__exercise__test">
+              <div class="card__exercise__task" *ngFor="let task of exercise.tests; let j = index">
+                <div class="card__exercise__task__title">
+                  {{ task.question }}
+                </div>
+                <div class="card__exercise__task__answers">
+                  <label class="card__exercise__task__answer"
+                      *ngFor="let answer of task.answers; let m = index"
+                      [class.greenbg]="answer.correct">
+                    <input type="radio" [name]=j [checked]="isStudentAnswer(exercise, j, m)" disabled="true">
+                    {{ answer.option }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  
   </div>
 </div>

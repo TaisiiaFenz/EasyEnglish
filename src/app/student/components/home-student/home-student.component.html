@@ -1,7 +1,7 @@
 <div class="section">
   <app-nav-bar [activeItem]="'homeStudent'"></app-nav-bar>
   <div
-    *ngIf="!showTest&&!currentUser?.levelOfEnglish"
+    *ngIf="donePause&&!showTest&&!currentUser?.levelOfEnglish"
     (click)="openTest()"
     class="section__button section__button__active"
   >
@@ -13,8 +13,9 @@
   ></app-freshman-test>
   <div
     *ngIf="currentUser?.levelOfEnglish"
-    class="section__info"
+    class="pic"
   >
+  <div class="section__info">
     <div class="section__info__title">
       Name of student: <span>{{ currentUser?.user?.name }}</span>
     </div>
@@ -24,5 +25,6 @@
     <div class="section__info__sub-title">
       Teacher: <span>{{ currentUser?.teacher?.user?.name }}</span>
     </div>
+  </div>
   </div>
 </div>

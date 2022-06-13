@@ -84,4 +84,8 @@ export class MyStudentsComponent implements OnInit {
     return Math.floor(Math.random() * 10000);
   }
 
+  openTest(exercise: any): void {
+    exercise.isOpen = !exercise.isOpen;
+  }
+
 }

@@ -1,6 +1,7 @@
 <div class="section">
   <app-nav-bar [activeItem]="'tasksTeacher'"></app-nav-bar>
 
+  <div class="pic">
   <div class="button-active button section__button" (click)="isTaskConstructorOpen = true">
     Add new task
   </div>
@@ -83,6 +84,7 @@
       </div>
     </div>
 
+    <div class="existing-card">
     <div class="card" *ngFor="let task of tasksTeacher; let j = index">
       <div class="card__title">
         {{ task.taskTitle }}
@@ -96,11 +98,13 @@
         </div>
         <div class="card__task__answers">
           <label class="card__task__answer" *ngFor="let answer of test.answers">
-            <input type="radio" [name]=j*10+i [checked]="answer.correct"/>
+            <input type="radio" [name]=j*10+i [checked]="answer.correct" disabled/>
             {{ answer.option }}
           </label>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>

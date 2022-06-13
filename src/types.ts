@@ -12,7 +12,8 @@ export interface Task {
   studentAnswers?: number[],
   taskTitle: string,
   taskInfo: string,
-  tests: Test[]
+  tests: Test[],
+  isOpen?: boolean
 }
 
 export interface Test {
@@ -26,6 +27,7 @@ export interface Answer {
 }
 
 export interface proUser {
+  key?: string,
   user: User,
   teacher?: proUser,
   students?: proUser[],

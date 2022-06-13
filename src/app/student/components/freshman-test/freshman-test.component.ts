@@ -68,7 +68,7 @@ export class FreshmanTestComponent implements OnInit {
     this.mainService.getUsersList()
     .subscribe(users => {
       users.forEach(user => {
-        if (user.user.login === this.currentUser.user.login) {
+        if (user?.user.login === this.currentUser?.user.login) {
           user.levelOfEnglish = this.levelOfEnglishOfCurrentUser;
         }
       })

@@ -17,13 +17,19 @@
   border-radius: 5px;
   padding: 40px;
   margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+
+  &__info {
+    
+  }
 
   &__title {
     font-size: 30px;
-    color: var(--gray-font-color);
+    color: var(--gray-font-main-color);
 
     span {
-
+      color: var(--gray-font-color);
     }
   }
 
@@ -38,15 +44,26 @@
     }
   }
 
+  &__dropdown {
+
+    &__title {
+      font-size: 22px;
+      padding-top: 50px;
+      padding-bottom: 10px;
+      color: var(--gray-font-main-color);
+      font-weight: bold;
+    }
+  }
+
   &__tasks {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    width: 57%;
+    height: 270px;
+    overflow: auto;
   }
 
   &__exercise {
-    width: 45%;
-    padding: 60px 20px;
+    padding: 10px;
+    padding-right: 20px;
 
     &__title-block {
       display: flex;
@@ -63,6 +80,12 @@
       color: var(--gray-font-color);
       padding-top: 10px;
       padding-bottom: 5px;
+    }
+
+    &__more {
+      padding-top: 30px;
+      font-weight: bold;
+      color: var(--gray-font-main-color);
     }
 
     &__task {
@@ -106,4 +129,85 @@ td {
   width: 200px;
   height: 40px;
   border: 1px solid black;
+}
+
+select {
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
+  outline:0;
+  box-shadow:none;
+  border:0!important;
+  background: var(--bg-color);
+  background-image: none;
+  flex: 1;
+  padding: 0 .5em;
+  color: black;
+  cursor:pointer;
+  font-size: 1em;
+}
+
+select::-ms-expand {
+  display: none;
+}
+.select {
+  position: relative;
+  display: flex;
+  width: 400px;
+  height: 3em;
+  line-height: 3;
+  background: var(--bg-color);
+  overflow: hidden;
+  border-radius: .25em;
+}
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: linear-gradient(0.25turn, var(--blue-color), var(--purple-color), var(--red-color));  ;
+  cursor:pointer;
+  color: #ffffff;
+  pointer-events:none;
+  transition:.25s all ease;
+}
+.select:hover::after {
+  color: var(--green-color);
+}
+
+.option {
+  height: 100px;
+}
+
+.shadow {
+  box-shadow:0 0 20px #f1f1ff;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(255, 255, 255); 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(0.5turn, var(--blue-color), var(--purple-color), var(--red-color)); 
+  border-radius: 10px;
+}
+
+.pic {
+  width: 100%;
+  height: 100%;
+  background: url("/../../../../../assets/pic4.png") no-repeat;
+  //background-size: 40% 100%;
+  background-size: cover;
+  background-position: left center;
 }

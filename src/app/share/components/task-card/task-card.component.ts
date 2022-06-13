@@ -26,6 +26,8 @@ export class TaskCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.task);
+    this.addAnswers();
     this.mainService.getCurrentUser()
     .subscribe(user => {
       this.currentUser = user;
@@ -40,6 +42,12 @@ export class TaskCardComponent implements OnInit {
     this.answers.fill(-1);
   }
 
+  addAnswers() {
+    if (this.task.status === "DONE") {
+      this.isDone = true;
+    }
+  }
+
   openTest(): void {
     this.isOpenedTest = !this.isOpenedTest;
   }
@@ -51,6 +59,18 @@ export class TaskCardComponent implements OnInit {
       this.answers[i] = j;
     }
     console.log(this.answers);
+  }
+
+  isStudentAnswer(i: number, j: number) {
+    if (this.task.status === "DONE") {
+      const studentAnswers = this.task.studentAnswers;
+      console.log(studentAnswers);
+      console.log(j);
+      if (studentAnswers[i] === j) {
+        return true;
+      }
+    }
+    return false;
   }
 
   emptyAnswersCheck(): void {

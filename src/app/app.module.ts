@@ -4,6 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
+import { environment } from '../environments/environment';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { AngularFireModule } from '@angular/fire/compat';
+import { providePerformance,getPerformance } from '@angular/fire/performance';
 
 @NgModule({
   declarations: [
@@ -12,7 +18,11 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideDatabase(() => getDatabase()),
+    AngularFirestoreModule,
+    providePerformance(() => getPerformance())
   ],
   providers: [],
   bootstrap: [AppComponent]

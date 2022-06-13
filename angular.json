@@ -106,6 +106,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "EasyEnglish:build:production",
+            "firebaseProject": "easyenglish-b4024",
+            "firebaseHostingSite": "easyenglish-b4024"
+          }
         }
       }
     }

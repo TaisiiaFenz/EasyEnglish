@@ -1,6 +1,7 @@
 <div class="section">
   <app-nav-bar [activeItem]="'avaliableStudents'"></app-nav-bar>
 
+  <div class="pic">
   <div class="cards">
     <div class="card" *ngFor="let student of avaliableStudents">
       <div>
@@ -12,9 +13,10 @@
         </div>
       </div>
       <div class="button button-active card__button" (click)="addStudent(student)">
-        Add student
+        ADD
       </div>
     </div>
   </div>
+</div>
 </div>
 
