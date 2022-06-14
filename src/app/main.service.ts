@@ -19,7 +19,6 @@ export class MainService {
   constructor(private http: HttpClient, 
     private db: AngularFireDatabase) { 
       this.usersRef = db.list('/users');
-      this.currentUserRef = db.object('/currentUser');
       this.setCurrentUser();
      }
 
@@ -48,11 +47,11 @@ export class MainService {
     )
   }
 
-  addUser(user: proUser): Observable<proUser> {
+  addUser(user: proUser) {
     return this.getUsersListRef().push(user);
   }
 
-  updateCurrentUser(user: proUser): Observable<proUser> {
+  updateCurrentUser(user: proUser) {
     return this.getCurrentUserRef().set(user);
   }
 

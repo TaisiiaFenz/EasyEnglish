@@ -63,7 +63,8 @@ export class TaskCardComponent implements OnInit {
 
   isStudentAnswer(i: number, j: number) {
     if (this.task.status === "DONE") {
-      const studentAnswers = this.task.studentAnswers;
+      const studentAnswers = this.task?.studentAnswers;
+      console.log(this.task);
       console.log(studentAnswers);
       console.log(j);
       if (studentAnswers[i] === j) {
@@ -82,6 +83,7 @@ export class TaskCardComponent implements OnInit {
   
   saveTaskAnswers(): void {
     this.task.status = 'DONE';
+    this.task.studentAnswers = this.answers;
     const tasksList = this.currentUser.tasks;
     const newTask = tasksList?.find(taskItem => taskItem.id === this.task.id);
     if (newTask) {

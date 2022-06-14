@@ -16,6 +16,7 @@ export class FreshmanTestService {
   getFreshmanTest(): Observable<Test[]> {
     return this.http.get<Test[]>(`${FreshmanTestService.url}/freshmanTest.json`)
       .pipe(map(tests => {
+        console.log(tests);
         if (!tests) {
           return [];
         }

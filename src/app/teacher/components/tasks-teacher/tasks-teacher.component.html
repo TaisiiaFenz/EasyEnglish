@@ -89,8 +89,8 @@
       </div>
     </div>
 
-    <div class="existing-card">
-    <div class="card" *ngFor="let task of tasksTeacher; let j = index">
+    <div *ngFor="let task of tasksTeacher; let j = index">
+      <div class="card">
       <div class="card__title">
         {{ task.taskTitle }}
       </div>
