@@ -41,3 +41,6 @@ input:active, :hover, :focus {
   outline: 0;
   outline-offset: 0;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

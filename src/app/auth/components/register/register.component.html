@@ -3,9 +3,11 @@
     <form [formGroup]="formGroup">
       <div class="card__title">Register</div>
       <input formControlName="name" placeholder="Name" class="card__input">
+      <div class="error-message" *ngIf="f.name.errors">Enter correct name, please</div>
       <input formControlName="surname" placeholder="Surname" class="card__input">
+      <div class="error-message" *ngIf="f.surname.errors">Enter correct surname, please</div>
       <div class="card__radio-section">
-        <div>
+        <div class="card__message">
           Role:
         </div>
         <div class="card__radio-section__radio-buttons">
@@ -20,8 +22,14 @@
         </div>
       </div>
       <input type="date" formControlName="birthDate" class="card__input">
+      <div class="error-message" *ngIf="f.birthDate.errors">Sorry,
+         the age of user should be more than 10 and less than 100</div>
       <input formControlName="login" placeholder="Login" class="card__input">
+      <div class="error-message" *ngIf="f.login.errors">Enter correct email, please</div>
       <input formControlName="password" placeholder="Password" class="card__input" type="password">
+      <div class="error-message" *ngIf="f.password.errors">
+        Enter minimum eight characters, at least one letter and one number
+      </div>
       <div class="card__buttons">
         <button class="card__button card__button__login"
                 mat-button

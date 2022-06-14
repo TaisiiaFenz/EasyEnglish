@@ -12,6 +12,10 @@
   background-color: var(--gray-G0-color);
   border: 1px solid var(--border-color);
 
+  &__message {
+    padding-bottom: 5px;
+  }
+
   &__title {
     font-width: bold;
     font-size: 30px;
@@ -65,4 +69,11 @@
   &__button:disabled {
     background: var(--disabled-color);
   }
+}
+
+.error-message {
+  padding-left: 20px;
+  padding-top: 4px;
+  color: #ff0000;
+  font-size: 12px;
 }
